@@ -12,11 +12,8 @@ public class MainActivity extends AppCompatActivity {
     private Thread secThread, thirdTread;
     public static ArrayList<GoodOZON> goodOZONArrayList;
     public static ArrayList<GoodAVITO> goodAVITOArrayList;
-   // public static ArrayList<Object> allGoodsArrayList = new ArrayList<>();
 
-   // static final String GOOD_OZON_ARRAYLIST = "GOOD_OZON_ARRAYLIST";
-
-
+    private boolean is_parsed = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,49 +21,34 @@ public class MainActivity extends AppCompatActivity {
 
         //запускаем активити со списком продуктов
         init();
-        while (secThread.isAlive()){
+        while (!is_parsed){
+            Intent intent = new Intent(this, ShowGoodsActivity.class);
+            //  intent.putExtra(GOOD_OZON_ARRAYLIST, goodOZONArrayList);
+            startActivity(intent);
         }
-        Intent intent = new Intent(this, ShowGoodsActivity.class);
-      //  intent.putExtra(GOOD_OZON_ARRAYLIST, goodOZONArrayList);
-        startActivity(intent);
+
+
 
     }
 
     private void init(){
         Runnable runnable1 = new Runnable() {
-
             @Override
             public void run() {
-                //TODO: make new thread somewhere here
-                Runnable runnable2 = new Runnable() {
-
-                    @Override
-                    public void run() {
-
-
-
+                    //Результаты поиска на АВИТО по запросам:
+                    goodAVITOArrayList = new ArrayList<>();
+                    for (String link : Links.getAVITOLinks()){
+                        goodAVITOArrayList.addAll(ParseAVITO.getWeb(link));
                     }
-                };
 
-                thirdTread = new Thread(runnable2);
-                thirdTread.start();
+                    //Результаты поиска на ОЗОН по запросам:
+                    goodOZONArrayList = new ArrayList<>();
+                    for (String link : Links.getOZONSearchLinks()){
+                        goodOZONArrayList.addAll(ParseOZON.getWeb(link));
+                    }
 
-                //Результаты поиска на АВИТО по запросам:
-                goodAVITOArrayList = new ArrayList<>();
-                for (String link : Links.getAVITOLinks()){
-                    goodAVITOArrayList.addAll(ParseAVITO.getWeb(link));
-                }
-
-                //Результаты поиска на ОЗОН по запросам:
-                goodOZONArrayList = new ArrayList<>();
-                for (String link : Links.getOZONSearchLinks()){
-                    goodOZONArrayList.addAll(ParseOZON.getWeb(link));
-                }
-
-
-
-
-                //TODO: дай парсерсу Авито собрать инфу
+                    is_parsed = true;
+                //TODO: сделай отдельный тред для авито
             }
         };
 

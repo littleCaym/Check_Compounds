@@ -1,22 +1,17 @@
 package com.example.checkcompounds;
 
 public class GoodAVITO extends Good{
+
+
+    public static String LOCATION = "LOCATION";
+
+
    // private String title;
    // private String price; //TODO:изменить на int
-    private String description;
+    //private String description;
     private String location;
   //  private String date_upload;
 
-
-
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public String getLocation() {
         return location;

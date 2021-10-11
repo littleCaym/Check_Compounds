@@ -42,38 +42,31 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void run() {
-                        //TODO: make new thread somewhere here
-                        //Результаты поиска на ОЗОН по запросам:
-                /*
-                goodOZONArrayList = new ArrayList<>();
-                for (String link : Links.getOZONSearchLinks()){
-                    goodOZONArrayList.addAll(ParseOZON.getWeb(link));
-                }
-                */
-                        //Результаты поиска на АВИТО по запросам:
-                        goodAVITOArrayList = new ArrayList<>();
-                        for (String link : Links.getAVITOLinks()){
-                            goodAVITOArrayList.addAll(ParseAVITO.getWeb(link));
-                        }
+
+
 
                     }
                 };
 
                 thirdTread = new Thread(runnable2);
                 thirdTread.start();
-                //Результаты поиска на ОЗОН по запросам:
-                goodOZONArrayList = new ArrayList<>();
-                for (String link : Links.getOZONSearchLinks()){
-                    goodOZONArrayList.addAll(ParseOZON.getWeb(link));
-                }
-                /*
+
                 //Результаты поиска на АВИТО по запросам:
                 goodAVITOArrayList = new ArrayList<>();
                 for (String link : Links.getAVITOLinks()){
                     goodAVITOArrayList.addAll(ParseAVITO.getWeb(link));
                 }
 
-                 */
+                //Результаты поиска на ОЗОН по запросам:
+                goodOZONArrayList = new ArrayList<>();
+                for (String link : Links.getOZONSearchLinks()){
+                    goodOZONArrayList.addAll(ParseOZON.getWeb(link));
+                }
+
+
+
+
+                //TODO: дай парсерсу Авито собрать инфу
             }
         };
 

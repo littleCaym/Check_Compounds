@@ -50,10 +50,6 @@ public class ParseOZON {
     //Парсинг по запросам
 
     public static ArrayList<GoodOZON> getWeb(String pageAddress){
-        //ArrayList<GoodOZON> goodOZONArrayList = new ArrayList<>();
- //       goodOZONArrayList.addAll(getFirstElementsFromDOM(pageAddress));
-
-
         return getTheRestOfElementsFromJSON(pageAddress);
     }
 

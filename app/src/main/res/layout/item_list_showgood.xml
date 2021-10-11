@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp"
+    android:padding="10dp"
+    android:background="@drawable/card_background_selector"
+    android:descendantFocusability="afterDescendants"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_showGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textView_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="product" />
+
+        <TextView
+            android:id="@+id/textView_brand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="brand" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView_currPrice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:textAlignment="center"
+        tools:text="price" />
+</LinearLayout>

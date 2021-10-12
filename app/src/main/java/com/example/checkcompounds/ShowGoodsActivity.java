@@ -34,10 +34,6 @@ public class ShowGoodsActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_show_goods);
         Intent intent = getIntent();
 
-        /*
-        goodOZONArrayList = MainActivity.goodOZONArrayList;
-        goodAVITOArrayList = MainActivity.goodAVITOArrayList;
-         */
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         // Настраиваем адаптер
@@ -52,7 +48,9 @@ public class ShowGoodsActivity extends AppCompatActivity implements
         ShowGoodsAdapter adapter = new ShowGoodsAdapter(this, selectedSpinnerID);
         recyclerView.setAdapter(adapter);
 
+        //Кнопка СОХРАНИТЬ
         Button button_safe = (Button) findViewById(R.id.button_save_all_goods);
+        button_safe.setText("Сохранить");
         button_safe.setOnClickListener(this);
 
 
@@ -64,12 +62,11 @@ public class ShowGoodsActivity extends AppCompatActivity implements
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerViewGoods);
         ShowGoodsAdapter adapter = new ShowGoodsAdapter(this, selectedSpinnerID);
         recyclerView.setAdapter(adapter);
-        // An item was selected. You can retrieve the selected item using
-        // parent.getItemAtPosition(pos)
+
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
-       // selectedSpinnerID = String.valueOf(parent.getItemAtPosition(0));
+
     }
 
     @Override

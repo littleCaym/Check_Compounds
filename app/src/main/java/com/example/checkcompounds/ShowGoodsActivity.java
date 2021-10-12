@@ -86,7 +86,7 @@ public class ShowGoodsActivity extends AppCompatActivity implements
                 java.sql.Date date = new java.sql.Date(new java.util.Date().getTime());
                 //если дата не сегодняшняя
                 java.sql.Date date_check = DAO.getDateOfLastUpdate(db);
-                if (!date.toString().equals(date_check.toString())){
+                if (!String.valueOf(date).equals(String.valueOf(date_check))){
                     DAO.addOzonGoods(goodOZONArrayList, db, date);
                     DAO.addAvitoGoods(goodAVITOArrayList, db, date);
 

@@ -98,4 +98,11 @@
         <item>OZON</item>
         <item>Avito</item>
     </string-array>
+
+    <string-array name="Tables">
+        <item>OZON</item>
+        <item>Avito</item>
+        <item>Лучшая цена</item>
+        <item>Совпадения</item>
+    </string-array>
 </resources>

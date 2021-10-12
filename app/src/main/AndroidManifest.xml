@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CheckCompounds">
-
+        <activity
+            android:name=".ShowDBActivity"
+            android:exported="true" />
         <activity
             android:name=".ShowGoodsActivity"
             android:exported="true" />
@@ -23,13 +25,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".SplashActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

@@ -22,7 +22,11 @@ public class SplashActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                startActivity(new Intent(SplashActivity.this, ShowGoodsActivity.class));
+                Intent intent = getIntent();
+                if (intent.getStringExtra("Activity").equals("ShowDBActivity"))
+                    startActivity(new Intent(SplashActivity.this, ShowDBActivity.class));
+                if (intent.getStringExtra("Activity").equals("ShowGoodsActivity"))
+                    startActivity(new Intent(SplashActivity.this, ShowGoodsActivity.class));
                 finish();
             }
         },100);

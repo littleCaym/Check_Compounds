@@ -1,8 +1,8 @@
 package com.example.checkcompounds;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,14 +10,13 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class ShowGoodsAdapter extends RecyclerView.Adapter<ShowGoodsAdapter.ViewHolder> {
-
+public class ShowDBAdapter extends RecyclerView.Adapter<ShowDBAdapter.ViewHolder>{
     public final LayoutInflater inflater;
     private List<GoodOZON> goodOzonList;
     private List<GoodAVITO> goodAVITOList;
     private int selectedSpinnerID;
 
-    ShowGoodsAdapter(Context context, int selectedSpinnerID){
+    ShowDBAdapter(Context context, int selectedSpinnerID){
         this.selectedSpinnerID = selectedSpinnerID;
         this.goodAVITOList = MainActivity.goodAVITOArrayList;
         this.goodOzonList = MainActivity.goodOZONArrayList;
@@ -33,16 +32,15 @@ public class ShowGoodsAdapter extends RecyclerView.Adapter<ShowGoodsAdapter.View
         this.inflater = LayoutInflater.from(context);
     }
 
+    @NonNull
     @Override
-    public ShowGoodsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        View view = inflater.inflate(R.layout.item_list_showgood, parent, false);
-        return new ViewHolder(view);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view = inflater.inflate(R.layout.item_list_showgood, viewGroup, false);
+        return new ShowDBAdapter.ViewHolder(viewGroup);
     }
 
     @Override
-    public void onBindViewHolder(ShowGoodsAdapter.ViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         switch (selectedSpinnerID){
             case 0: {
                 GoodOZON goodOZON =goodOzonList.get(position);
@@ -67,16 +65,12 @@ public class ShowGoodsAdapter extends RecyclerView.Adapter<ShowGoodsAdapter.View
                 holder.currPriceView.setText(String.valueOf(goodOZON.getPrice()));
             }
         }
+
     }
 
     @Override
     public int getItemCount() {
-        switch (selectedSpinnerID) {
-            case 1:
-                return goodAVITOList.size();
-            default:
-                return goodOzonList.size();
-        }
+        return 0;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
@@ -91,4 +85,5 @@ public class ShowGoodsAdapter extends RecyclerView.Adapter<ShowGoodsAdapter.View
         }
 
     }
+
 }

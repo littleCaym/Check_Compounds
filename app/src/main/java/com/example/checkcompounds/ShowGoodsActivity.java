@@ -79,17 +79,24 @@ public class ShowGoodsActivity extends AppCompatActivity implements
                 goodOZONArrayList = MainActivity.goodOZONArrayList;
                 goodAVITOArrayList = MainActivity.goodAVITOArrayList;
 
-
                 //Загружаем все в БД
                 DBHelper dbHelper = new DBHelper(this);
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
-                //TODO: если дата не сегодняшняя
-                java.sql.Date date = new java.sql.Date(new java.util.Date().getTime());
-                DAO.addOzonGoods(goodOZONArrayList, db, date);
-                DAO.addAvitoGoods(goodAVITOArrayList, db, date);
 
-                Toast.makeText(this, "Добавлено в БД",
-                        Toast.LENGTH_LONG).show();
+                java.sql.Date date = new java.sql.Date(new java.util.Date().getTime());
+                //если дата не сегодняшняя
+                java.sql.Date date_check = DAO.getDateOfLastUpdate(db);
+                if (!date.toString().equals(date_check.toString())){
+                    DAO.addOzonGoods(goodOZONArrayList, db, date);
+                    DAO.addAvitoGoods(goodAVITOArrayList, db, date);
+
+                    Toast.makeText(this, "Добавлено в БД",
+                            Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(this,"Данные на сегодня уже были загружены!",
+                            Toast.LENGTH_LONG).show();
+                }
                 break;
         }
 

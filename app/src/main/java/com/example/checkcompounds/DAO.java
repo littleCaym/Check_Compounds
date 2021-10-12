@@ -1,8 +1,10 @@
 package com.example.checkcompounds;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -56,6 +58,21 @@ public class DAO {
 
             db.insert(DBHelper.GOODS_AVITO, null, cv);
         }
+
+    }
+
+    //Берем дату загрузки по первому элементу
+    public static java.sql.Date getDateOfLastUpdate(SQLiteDatabase db){
+        java.sql.Date date = null;
+        ContentValues cv = new ContentValues();
+        Cursor c = db.query(DBHelper.GOODS_OZON, null, null, null, null, null, null);
+        if (c.moveToLast()){
+            date = java.sql.Date.valueOf(
+                    c.getString(
+                            c.getColumnIndex(
+                                    DBHelper.DATE_VIEWED)));
+        }
+        return date;
 
     }
 
